@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "markers",
+  "info": {
+    "singularName": "marker",
+    "pluralName": "markers",
+    "displayName": "Marker",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Latitude": {
+      "type": "string",
+      "required": true
+    },
+    "Longitude": {
+      "type": "string"
+    }
+  }
+}
