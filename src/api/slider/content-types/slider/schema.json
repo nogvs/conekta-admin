@@ -4,7 +4,8 @@
   "info": {
     "singularName": "slider",
     "pluralName": "sliders",
-    "displayName": "Slider"
+    "displayName": "Anuncios",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,15 +17,15 @@
       "required": true
     },
     "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     }
   }
 }

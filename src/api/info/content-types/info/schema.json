@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "infos",
+  "info": {
+    "singularName": "info",
+    "pluralName": "infos",
+    "displayName": "Informacoes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nivel": {
+      "type": "string",
+      "required": true,
+      "default": "cm"
+    },
+    "AtualizadoEm": {
+      "type": "string",
+      "required": true,
+      "default": "Atualizado em "
+    },
+    "ChuvaDia": {
+      "type": "string",
+      "required": true,
+      "default": "mm"
+    }
+  }
+}

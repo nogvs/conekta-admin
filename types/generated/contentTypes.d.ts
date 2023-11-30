@@ -677,12 +677,48 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAlertAlert extends Schema.CollectionType {
+  collectionName: 'alerts';
+  info: {
+    singularName: 'alert';
+    pluralName: 'alerts';
+    displayName: 'Alerta';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Tipo: Attribute.String & Attribute.DefaultTo<'Alagamento'>;
+    Autor: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Defesa Civil'>;
+    Descricao: Attribute.String & Attribute.Required;
+    Titulo: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::alert.alert',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::alert.alert',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAuthoritieAuthoritie extends Schema.CollectionType {
   collectionName: 'authorities';
   info: {
     singularName: 'authoritie';
     pluralName: 'authorities';
-    displayName: 'Authoritie';
+    displayName: 'Autoridades';
     description: '';
   };
   options: {
@@ -710,12 +746,39 @@ export interface ApiAuthoritieAuthoritie extends Schema.CollectionType {
   };
 }
 
+export interface ApiInfoInfo extends Schema.CollectionType {
+  collectionName: 'infos';
+  info: {
+    singularName: 'info';
+    pluralName: 'infos';
+    displayName: 'Informacoes';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nivel: Attribute.String & Attribute.Required & Attribute.DefaultTo<'cm'>;
+    AtualizadoEm: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Atualizado em '>;
+    ChuvaDia: Attribute.String & Attribute.Required & Attribute.DefaultTo<'mm'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMarkerMarker extends Schema.CollectionType {
   collectionName: 'markers';
   info: {
     singularName: 'marker';
     pluralName: 'markers';
-    displayName: 'Marker';
+    displayName: 'Marcador';
     description: '';
   };
   options: {
@@ -743,12 +806,71 @@ export interface ApiMarkerMarker extends Schema.CollectionType {
   };
 }
 
+export interface ApiNewNew extends Schema.CollectionType {
+  collectionName: 'news';
+  info: {
+    singularName: 'new';
+    pluralName: 'news';
+    displayName: 'Noticias';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titulo: Attribute.String & Attribute.Required;
+    Subtitulo: Attribute.String & Attribute.Required;
+    Imagem: Attribute.Media & Attribute.Required;
+    Corpo: Attribute.Text & Attribute.Required;
+    Autor: Attribute.String & Attribute.DefaultTo<'Marcelo Lopes'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOnboardOnboard extends Schema.CollectionType {
+  collectionName: 'onboards';
+  info: {
+    singularName: 'onboard';
+    pluralName: 'onboards';
+    displayName: 'Onboard';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titulo: Attribute.String & Attribute.Required;
+    Descricao: Attribute.String & Attribute.Required;
+    Imagem: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::onboard.onboard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::onboard.onboard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSliderSlider extends Schema.CollectionType {
   collectionName: 'sliders';
   info: {
     singularName: 'slider';
     pluralName: 'sliders';
-    displayName: 'Slider';
+    displayName: 'Anuncios';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -790,8 +912,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::alert.alert': ApiAlertAlert;
       'api::authoritie.authoritie': ApiAuthoritieAuthoritie;
+      'api::info.info': ApiInfoInfo;
       'api::marker.marker': ApiMarkerMarker;
+      'api::new.new': ApiNewNew;
+      'api::onboard.onboard': ApiOnboardOnboard;
       'api::slider.slider': ApiSliderSlider;
     }
   }
