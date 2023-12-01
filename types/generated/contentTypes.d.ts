@@ -718,7 +718,7 @@ export interface ApiAuthoritieAuthoritie extends Schema.CollectionType {
   info: {
     singularName: 'authoritie';
     pluralName: 'authorities';
-    displayName: 'Autoridades';
+    displayName: 'Autoridade';
     description: '';
   };
   options: {
@@ -869,7 +869,7 @@ export interface ApiSliderSlider extends Schema.CollectionType {
   info: {
     singularName: 'slider';
     pluralName: 'sliders';
-    displayName: 'Anuncios';
+    displayName: 'Anuncio';
     description: '';
   };
   options: {
